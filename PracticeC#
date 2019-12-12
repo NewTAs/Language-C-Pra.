@@ -1,0 +1,17 @@
+public void Get_BusStation()
+        {
+            SubwayStation subway = new SubwayStation();
+
+            int CountNum = 0;
+
+            XmlDocument Xml = new XmlDocument();
+            Xml.Load("http://swopenapi.seoul.go.kr/api/subway/636154635563686539355a6b784e4e/xml/busStation/0/1/" + subway.Get());
+            XmlNodeList XmlList = Xml.GetElementsByTagName("RESULT");
+
+            foreach (XmlNode XNL in XmlList)
+            {
+                CountNum = int.Parse(XNL["total"].InnerText);
+            }
+            
+            Console.WriteLine(CountNum);
+        }
